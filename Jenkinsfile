@@ -9,7 +9,7 @@ pipeline {
         }
         stage('run test'){
             steps {
-                sh 'docker run -it my-rust-lib cargo test'
+                sh 'docker run my-rust-lib cargo test'
             }
         }
         // stage('save docker image') {
