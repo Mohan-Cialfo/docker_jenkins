@@ -1,20 +1,10 @@
 pipeline {
-    agent any
-
+    agent { docker { image 'rust' } }
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                echo 'Building..'
+                sh 'rustc --version'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-   
+    }
+}
