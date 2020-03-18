@@ -12,12 +12,6 @@ pipeline {
                 sh 'docker run my-rust-lib cargo test'
             }
         }
-        stage('save docker image') {
-            steps {
-                sh "docker tag my-rust-lib:latest mohanliucialfo/rust_sample:${BUILD_ID}"
-                sh "docker push mohanliucialfo/rust_sample:${BUILD_ID}"
-            }
-        }
         // stage('Deploy') {
         //     steps {
         //         retry(3) {
@@ -36,9 +30,10 @@ pipeline {
             echo "build number ${BUILD_NUMBER}"
             echo "build tag ${BUILD_TAG}"
         }
-    //     success {
-    //         echo 'This will run only if successful'
-    //     }
+        success {
+            sh "docker tag my-rust-lib:latest mohanliucialfo/rust_sample:${BUILD_ID}"
+            sh "docker push mohanliucialfo/rust_sample:${BUILD_ID}"
+        }
     //     failure {
     //         echo 'This will run only if failed'
     //     }
