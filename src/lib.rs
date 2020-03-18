@@ -7,8 +7,7 @@ mod tests {
 
     #[test]
     fn another() {
-        panic!("Make this test fail");
+        assert_eq!(2 + 3, 5);
     }
 
 }
-

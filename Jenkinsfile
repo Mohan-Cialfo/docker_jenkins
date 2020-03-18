@@ -12,12 +12,12 @@ pipeline {
                 sh 'docker run my-rust-lib cargo test'
             }
         }
-        // stage('save docker image') {
-        //     steps {
-        //         sh 'docker tag my-rust-lib:latest mohanliucialfo/rust_sample:{tag} \
-        //             docker push mohanliucialfo/rust_sample:{tag}'
-        //     }
-        // }
+        stage('save docker image') {
+            steps {
+                sh "docker tag my-rust-lib:latest mohanliucialfo/rust_sample:${BUILD_ID}"
+                sh "docker push mohanliucialfo/rust_sample:${BUILD_ID}"
+            }
+        }
         // stage('Deploy') {
         //     steps {
         //         retry(3) {
