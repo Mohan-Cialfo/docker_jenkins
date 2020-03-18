@@ -32,7 +32,7 @@ pipeline {
     }
     post {
         always {
-            echo "build id {BUILD_ID}"
+            echo "build id ${BUILD_ID}"
             echo "build number ${BUILD_NUMBER}"
             echo "build tag ${BUILD_TAG}"
         }
