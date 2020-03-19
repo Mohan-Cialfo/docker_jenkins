@@ -1,5 +1,9 @@
 pipeline {
-    // agent { docker { image 'rust:1.31' } }
+    agent { docker {
+        image 'rust:1.31',
+        args  '-v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages {
         stage('build') {
             steps {
