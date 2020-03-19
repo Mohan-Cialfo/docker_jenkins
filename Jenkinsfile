@@ -1,10 +1,10 @@
 pipeline {
-    agent { docker {
-        image 'rust:1.31',
-        args  '-v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent none
     stages {
+        agent { docker {
+            image 'rust:1.31',
+            }
+        }
         stage('build') {
             steps {
                 sh 'rustc --version'
